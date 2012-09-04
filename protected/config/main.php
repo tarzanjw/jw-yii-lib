@@ -7,10 +7,10 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'My Yii Libraries',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'bootstrap'),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -32,6 +32,11 @@ return array(
 
 	// application components
 	'components'=>array(
+		'bootstrap'=>array(
+            'class'=>'ext.common.bootstrap.components.Bootstrap',
+            'responsiveCss'=>true,
+            'yiiCss'=>true,
+		),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
