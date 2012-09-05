@@ -16,18 +16,28 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'ext.common.OpenIDUser.OpenIDUser',
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		/*
+
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
+			'password'=>'1',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+			'generatorPaths'=>array(
+	            'bootstrap.gii',
+	        ),
 		),
-		*/
+
+	),
+
+	'controllerMap'=>array(
+    	'user'=>array(
+        	'class'=>'ext.common.OpenIDUser.OpenIDUserController',
+    	),
 	),
 
 	// application components
@@ -42,29 +52,31 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
-		/*
+
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+			'showScriptName'=>false,
 			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				'<_c:\w+>/'=>'<_c>/',
+				'<_c:\w+>/<_a:\w+>'=>'<_c>/<_a>',
+				'<_m:\w+>/<_c:\w+>/<_a:\w+>'=>'<_m>/<_c>/<_a>',
+				'<_p1:\w+>/<_p2:\w+>/<_p3:\w+>/<_p4:\w+>'=>'<_p1>/<_p2>/<_p3>/<_p4>',
 			),
 		),
-		*/
-		'db'=>array(
+
+		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+		),*/
 		// uncomment the following to use a MySQL database
-		/*
+
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=localhost;dbname=yii_libs',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
 		),
-		*/
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -72,10 +84,10 @@ return array(
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
-				array(
+				/*array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
-				),
+				),*/
 				// uncomment the following to show log messages on web pages
 				/*
 				array(
